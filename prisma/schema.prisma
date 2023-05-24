@@ -13,4 +13,21 @@ model User {
   email     String   @unique
   password  String
   username  String   @unique
+  createdAt DateTime @default(now())
+
+  tweets Tweet[]
+
+  @@map("users")
+}
+
+// Tweet model
+model Tweet {
+  id        Int      @id @unique @default(autoincrement())
+  content   String
+  createdAt DateTime @default(now())
+
+  userId    Int
+  tweetedBy User @relation(fields: [userId], references: [id])
+
+  @@map("tweets")
 }
