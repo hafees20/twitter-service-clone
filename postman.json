@@ -1,0 +1,509 @@
+{
+	"info": {
+		"_postman_id": "233c62c5-f241-4a83-a179-a412c0f5aa9a",
+		"name": "twitter-service-clone",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "20685073"
+	},
+	"item": [
+		{
+			"name": "Signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "hello@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "hello",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "hello",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:3000/auth/signup"
+			},
+			"response": [
+				{
+					"name": "Signup",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "hello@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "hello",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "hello",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:3000/auth/signup"
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "92"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"5c-AI7nQWbLhLjq/3Esb9fTScHOYJE\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 25 May 2023 09:36:56 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 4,\n    \"email\": \"hello@gmail.com\",\n    \"username\": \"hello\",\n    \"createdAt\": \"2023-05-25T09:36:56.250Z\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Signin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "hello@gmail.com",
+							"description": "Registered users email",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "hello",
+							"description": "Users password",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:3000/auth/signin"
+			},
+			"response": [
+				{
+					"name": "Signin",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "hello@gmail.com",
+									"description": "Registered users email",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "hello",
+									"description": "Users password",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:3000/auth/signin"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "192"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"c0-AwdL0HsxJ5Sip/2RXnQX7SZKcbI\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 25 May 2023 09:40:48 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImVtYWlsIjoiaGVsbG9AZ21haWwuY29tIiwiaWF0IjoxNjg1MDA3NjQ4LCJleHAiOjE2ODUwNjc2NDh9.LT6ycbL4-NQbnd3crsgJlVZ19M59kB9Vm78ekOQY__I\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Create tweet",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImVtYWlsIjoiaGVsbG9AZ21haWwuY29tIiwiaWF0IjoxNjg1MDA3NjQ4LCJleHAiOjE2ODUwNjc2NDh9.LT6ycbL4-NQbnd3crsgJlVZ19M59kB9Vm78ekOQY__I"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"content\":\"My first tweet\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/tweet/create"
+			},
+			"response": [
+				{
+					"name": "Create tweet",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\":\"My first tweet\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/tweet/create"
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "86"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"56-+6LEpNKi0d7bYJ09lN43TFqsGS4\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 25 May 2023 09:44:33 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 13,\n    \"content\": \"My first tweet\",\n    \"createdAt\": \"2023-05-25T09:44:33.728Z\",\n    \"userId\": 4\n}"
+				}
+			]
+		},
+		{
+			"name": "Get tweet",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImVtYWlsIjoiaGVsbG9AZ21haWwuY29tIiwiaWF0IjoxNjg1MDA3NjQ4LCJleHAiOjE2ODUwNjc2NDh9.LT6ycbL4-NQbnd3crsgJlVZ19M59kB9Vm78ekOQY__I"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/tweet/13"
+			},
+			"response": [
+				{
+					"name": "Get tweet",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/tweet/13"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "86"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"56-+6LEpNKi0d7bYJ09lN43TFqsGS4\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 25 May 2023 09:49:21 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 13,\n    \"content\": \"My first tweet\",\n    \"createdAt\": \"2023-05-25T09:44:33.728Z\",\n    \"userId\": 4\n}"
+				}
+			]
+		},
+		{
+			"name": "Edit tweet",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImVtYWlsIjoiaGVsbG9AZ21haWwuY29tIiwiaWF0IjoxNjg1MDA3NjQ4LCJleHAiOjE2ODUwNjc2NDh9.LT6ycbL4-NQbnd3crsgJlVZ19M59kB9Vm78ekOQY__I"
+					}
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"content\":\"Edited Tweet \"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/tweet/edit/13"
+			},
+			"response": [
+				{
+					"name": "Edit tweet",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\":\"Edited Tweet \"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/tweet/edit/13"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "85"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"55-cNKzLkWnaKNUQ2EdU8G9Xa0djd0\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 25 May 2023 09:52:57 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 13,\n    \"content\": \"Edited Tweet \",\n    \"createdAt\": \"2023-05-25T09:44:33.728Z\",\n    \"userId\": 4\n}"
+				}
+			]
+		},
+		{
+			"name": "Get User Info",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImVtYWlsIjoiaGVsbG9AZ21haWwuY29tIiwiaWF0IjoxNjg1MDA3NjQ4LCJleHAiOjE2ODUwNjc2NDh9.LT6ycbL4-NQbnd3crsgJlVZ19M59kB9Vm78ekOQY__I"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/user/hello"
+			},
+			"response": [
+				{
+					"name": "Get User Info",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/user/hello"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "163"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a3-l8Rd+Z0Qq5f/VIEbm9PchS415CU\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 25 May 2023 09:55:34 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 4,\n    \"username\": \"hello\",\n    \"createdAt\": \"2023-05-25T09:36:56.250Z\",\n    \"tweets\": [\n        {\n            \"id\": 13,\n            \"content\": \"Edited Tweet \",\n            \"createdAt\": \"2023-05-25T09:44:33.728Z\",\n            \"userId\": 4\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete tweet",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImVtYWlsIjoiaGVsbG9AZ21haWwuY29tIiwiaWF0IjoxNjg1MDA3NjQ4LCJleHAiOjE2ODUwNjc2NDh9.LT6ycbL4-NQbnd3crsgJlVZ19M59kB9Vm78ekOQY__I"
+					}
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:3000/tweet/delete/13"
+			},
+			"response": [
+				{
+					"name": "Delete tweet",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:3000/tweet/delete/13"
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 25 May 2023 09:56:17 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	]
+}
