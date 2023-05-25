@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { ForbiddenException, Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { PassportStrategy } from "@nestjs/passport";
 import { ExtractJwt, Strategy } from 'passport-jwt'
@@ -23,11 +23,17 @@ export class JwtStrategy extends PassportStrategy(
         sub: number,
         email: string
     }) {
+
         const user = await this.prisma.user.findUnique({
             where: {
                 id: payload.sub
             }
         });
+        
+        // if no user
+        if (!user) {
+            throw new ForbiddenException("Access Denied")
+        }
 
         delete user.password
         return user
