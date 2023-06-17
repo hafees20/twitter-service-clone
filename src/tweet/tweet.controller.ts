@@ -12,8 +12,13 @@ export class TweetController {
     ) { }
 
     @Post('create')
-    createTweet(@getUser('id') userId: number, @Body() dto: TweetDto) {
-        return this.tweetService.createTweet(userId, dto)
+    createTweet(@getUser('id') userId: number,@getUser('username') username:string, @Body() dto: TweetDto) {
+        return this.tweetService.createTweet(userId, username,dto)
+    }
+
+    @Get('all')
+    getAllTweets(){
+        return this.tweetService.getAllTweets()
     }
 
     @Get(':id')

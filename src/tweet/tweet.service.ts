@@ -7,7 +7,7 @@ export class TweetService {
     constructor(private prisma: PrismaService) { }
 
     // Create Tweet
-    async createTweet(userId: number, dto: TweetDto) {
+    async createTweet(userId: number, username:string,dto: TweetDto) {
 
         // store to db
         try {
@@ -17,10 +17,47 @@ export class TweetService {
                     ...dto
                 }
             })
-            return tweet
+
+            const newTweet={...tweet,username}
+            
+            return newTweet
         } catch (error) {
             return new BadRequestException("Tweet Failed")
         }
+
+    }
+
+    // get all tweets
+    async getAllTweets() {
+        // get all tweets from db
+        const tweets = await this.prisma.tweet.findMany({
+            orderBy: {
+                createdAt: 'desc',
+            }
+        })
+        const userIds = tweets.map(tweet => tweet.userId);
+
+        const users = await this.prisma.user.findMany({
+            where: { id: { in: userIds } },
+            select: { id: true, username: true },
+        });
+
+        // Create a map of userId to username for easy lookup
+        const userMap = {};
+        users.forEach(user => {
+            userMap[user.id] = user.username;
+        });
+
+        // Add the username to each tweet object
+        const tweetsWithUsername = tweets.map(tweet => ({
+            id: tweet.id,
+            content: tweet.content,
+            createdAt: tweet.createdAt,
+            userId: tweet.userId,
+            username: userMap[tweet.userId], // Get the username from the userMap
+        }));
+
+        return tweetsWithUsername
 
     }
 
