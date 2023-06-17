@@ -1,5 +1,6 @@
 import { ForbiddenException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { SearchExpressionDto } from './dto/search-expression-dto';
 
 @Injectable()
 export class UserService {
@@ -27,4 +28,19 @@ export class UserService {
         delete user.email
         return user
     }
+
+    async searchUsernames(dto:SearchExpressionDto) {
+        const usernames = await this.prisma.user.findMany({
+          where: {
+            username: {
+              startsWith: dto.expression,
+            },
+          },
+          select: {
+            username: true,
+          },
+        });
+      
+        return usernames;
+      }
 }
