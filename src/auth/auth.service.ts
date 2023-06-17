@@ -29,9 +29,10 @@ export class AuthService {
                 }
             })
 
-            // returning without pass
+            // deleting password from user
             delete user.password
-            return user
+            // calling sign token to return access token for user
+            return this.signToken(user.id, user.email, user)
 
         } catch (error) {
             // if error 
@@ -64,11 +65,12 @@ export class AuthService {
             throw new ForbiddenException("Password Incorrect")
         }
 
-        return this.signToken(user.id, user.email)
+
+        return this.signToken(user.id, user.email, user)
     }
 
     // Access token for authenticated users
-    async signToken(userId: number, email: string): Promise<{ access_token: string }> {
+    async signToken(userId: number, email: string, user: SignUpDto): Promise<{ access_token: string, user: SignUpDto }> {
         const payload: {} = {
             sub: userId,
             email
@@ -80,7 +82,7 @@ export class AuthService {
             expiresIn: '1000m',
             secret: secret,
         })
-
-        return { access_token: token }
+        delete user.password
+        return { access_token: token, user }
     }
 }
